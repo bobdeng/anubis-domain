@@ -36,10 +36,11 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
-
+apply from: "$rootDir/gradle/config/script/coverage-all.gradle"
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport // report is always generated after tests run
 }
+apply from: "$rootDir/gradle/config/script/coverage.gradle"
 
-apply from: "$rootDir/gradle/config/script/coverage-all.gradle"
+
