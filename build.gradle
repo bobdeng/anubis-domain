@@ -25,6 +25,7 @@ publishing {
 dependencies {
     compileOnly "org.projectlombok:lombok:1.18.20"
     implementation "com.google.code.gson:gson:2.8.5"
+    implementation "org.bouncycastle:bcprov-jdk16:1.46"
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testImplementation 'org.mockito:mockito-core:3.1.0'

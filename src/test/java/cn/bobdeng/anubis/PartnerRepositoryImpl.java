@@ -23,7 +23,7 @@ public class PartnerRepositoryImpl implements PartnerRepository {
     public Optional<Partner> findByCode(Partners partners, PartnerCode code) {
         return dummyDao.all()
                 .stream().filter(partnerDO -> partnerDO.getCode().equals(code.getCode()))
-                .map(partnerDO -> new Partner(new PartnerCode(partnerDO.getCode()), new PartnerName(partnerDO.getName())))
+                .map(partnerDO -> new Partner(PartnerId.of(partnerDO.getId()),new PartnerCode(partnerDO.getCode()), new PartnerName(partnerDO.getName())))
                 .findFirst();
     }
 }

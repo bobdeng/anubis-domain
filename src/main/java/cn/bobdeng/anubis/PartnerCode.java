@@ -10,4 +10,8 @@ public class PartnerCode {
 
         this.code = code;
     }
+
+    public static PartnerCode of(String code) {
+        return new PartnerCode(code);
+    }
 }
