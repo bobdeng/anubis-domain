@@ -1,5 +1,6 @@
 class CoverageExtension {
-    @SuppressWarnings("unused") excludes = []
+    @SuppressWarnings("unused")
+            excludes = []
 }
 
 apply plugin: 'java'
@@ -24,6 +25,7 @@ task jacocoRootReport(type: JacocoReport, group: 'verification') {
     reports {
         html.enabled = true
         xml.enabled = true
+        csv.required = false
     }
 }
 
