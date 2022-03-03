@@ -12,8 +12,9 @@ jobs:
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: jdk16
-      - run: wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
-      - run: source install-jdk.sh --feature 16
+        run: |
+          wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+          source install-jdk.sh --feature 16
       - name: run test
         run: |
           ./test.sh
