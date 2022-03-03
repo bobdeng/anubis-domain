@@ -16,4 +16,8 @@ public class PartnerKey {
     public boolean verify(Content content, Signature signature) {
         return this.key.verifySign(content.getContent(), signature.getSignature());
     }
+
+    public boolean isActive() {
+        return expireAt.isBiggerThan(System.currentTimeMillis());
+    }
 }

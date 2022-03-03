@@ -36,6 +36,7 @@ public class Partner {
 
     public boolean verifySign(Content content, Signature signature) {
         return partnerKeyRepository.findKeys(this)
+                .filter(partnerKey -> partnerKey.isActive())
                 .anyMatch(partnerKey -> partnerKey.verify(content,signature));
     }
 }

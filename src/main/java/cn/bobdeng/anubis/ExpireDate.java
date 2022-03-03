@@ -10,4 +10,11 @@ public class ExpireDate {
     public static ExpireDate empty() {
         return new ExpireDate(null);
     }
+
+    public boolean isBiggerThan(long currentTimeMillis) {
+        if (this.expireAt == null) {
+            return true;
+        }
+        return this.expireAt > currentTimeMillis;
+    }
 }
