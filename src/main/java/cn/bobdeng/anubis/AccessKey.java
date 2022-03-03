@@ -33,7 +33,7 @@ public class AccessKey {
             return signer.verifySignature(sign);
         } catch (Exception var6) {
             var6.printStackTrace();
-            throw new RuntimeException("验证签名异常：" + var6.getMessage());
+            return false;
         }
     }
 

@@ -1,4 +1,4 @@
 package cn.bobdeng.anubis;
 
-public class DuplicateCodeException extends Exception{
+public class DuplicateCodeException extends Exception {
 }
