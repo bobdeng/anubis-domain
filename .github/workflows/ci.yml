@@ -16,4 +16,5 @@ jobs:
           wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
           source install-jdk.sh --feature 16
           ./test.sh
+          ./check.sh
       - run: echo "🍏 This job's status is ${{ job.status }}."
