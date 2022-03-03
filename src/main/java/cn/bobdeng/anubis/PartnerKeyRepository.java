@@ -6,4 +6,6 @@ public interface PartnerKeyRepository {
     void save(Partner partner, PartnerKey partnerKey);
 
     Stream<PartnerKey> findKeys(Partner partner);
+
+    void save(PartnerKey partnerKey);
 }

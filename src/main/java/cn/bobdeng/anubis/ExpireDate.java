@@ -17,4 +17,8 @@ public class ExpireDate {
         }
         return this.expireAt > currentTimeMillis;
     }
+
+    public Long get() {
+        return expireAt;
+    }
 }

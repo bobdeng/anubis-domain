@@ -93,4 +93,19 @@ public class PartnerKeyTest {
         boolean result = partner.verifySign(content, signature);
         assertThat(result, is(false));
     }
+
+    @Test
+    public void should_set_key_expired_when_set_expire() {
+        PartnerKeyDO partnerKeyDO = partnerKeyDao.save(PartnerKeyDO.builder()
+                .partnerId(partner.id())
+                .key(key)
+                .build());
+        long expireAt = System.currentTimeMillis();
+        partner.findKey(partnerKeyDO.getId()).ifPresent(partnerKey -> {
+            partnerKey.setExpireAt(expireAt);
+        });
+
+        partnerKeyDO = partnerKeyDao.all().get(0);
+        assertThat(partnerKeyDO.getExpireAt(), is(expireAt));
+    }
 }

@@ -41,4 +41,6 @@ public class PartnerTest {
         PartnerName partnerName = new PartnerName("合作伙伴名字");
         assertThrows(DuplicateCodeException.class, () -> partners.newPartner(partnerCode, partnerName));
     }
+
+
 }

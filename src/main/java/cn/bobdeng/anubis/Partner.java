@@ -1,5 +1,7 @@
 package cn.bobdeng.anubis;
 
+import java.util.Optional;
+
 import static cn.bobdeng.anubis.Partners.partnerKeyRepository;
 
 public class Partner {
@@ -36,7 +38,13 @@ public class Partner {
 
     public boolean verifySign(Content content, Signature signature) {
         return partnerKeyRepository.findKeys(this)
-                .filter(partnerKey -> partnerKey.isActive())
-                .anyMatch(partnerKey -> partnerKey.verify(content,signature));
+                .filter(PartnerKey::isActive)
+                .anyMatch(partnerKey -> partnerKey.verify(content, signature));
+    }
+
+    public Optional<PartnerKey> findKey(int id) {
+        return partnerKeyRepository.findKeys(this)
+                .filter(partnerKey -> partnerKey.id() == id)
+                .findFirst();
     }
 }

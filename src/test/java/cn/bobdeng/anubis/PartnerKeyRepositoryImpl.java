@@ -26,8 +26,17 @@ public class PartnerKeyRepositoryImpl implements PartnerKeyRepository {
                 .map(partnerKeyDO -> {
                     ExpireDate expireAt = new ExpireDate(partnerKeyDO.getExpireAt());
                     AccessKey key = new AccessKey(partnerKeyDO.getKey());
-                    PartnerKey partnerKey = new PartnerKey(key, expireAt);
+                    PartnerKeyId id = PartnerKeyId.of(partnerKeyDO.getId());
+                    PartnerKey partnerKey = new PartnerKey(id, key, expireAt);
                     return partnerKey;
                 });
+    }
+
+    @Override
+    public void save(PartnerKey partnerKey) {
+        dummyDao.findById(partnerKey.id()).ifPresent(partnerKeyDO -> {
+            partnerKeyDO.setExpireAt(partnerKey.expireAt());
+            dummyDao.save(partnerKeyDO);
+        });
     }
 }
